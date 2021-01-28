@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="EmailAddressService" targetNamespace="http://novoEmail/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://novoEmail/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://novoEmail/" schemaLocation="emailaddress_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="validarEmailAddressResponse">
+    <wsdl:part name="parameters" element="tns:validarEmailAddressResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validarEmailAddress">
+    <wsdl:part name="parameters" element="tns:validarEmailAddress">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EmailAddress">
+    <wsdl:operation name="validarEmailAddress">
+      <wsdl:input name="validarEmailAddress" message="tns:validarEmailAddress">
+    </wsdl:input>
+      <wsdl:output name="validarEmailAddressResponse" message="tns:validarEmailAddressResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EmailAddressServiceSoapBinding" type="tns:EmailAddress">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="validarEmailAddress">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="validarEmailAddress">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="validarEmailAddressResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EmailAddressService">
+    <wsdl:port name="EmailAddressPort" binding="tns:EmailAddressServiceSoapBinding">
+      <soap:address location="http://localhost:8081/novoEmail/services"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
